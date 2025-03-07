@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  namespace: expense
+  # labels of deployment resource
+  labels:
+    app: mysql
+    tier: mysql
+    project: expense
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+      tier: mysql
+      project: expense
+  template:
+    metadata:
+      labels:
+        app: mysql
+        tier: mysql
+        project: expense
+    spec:
+      containers:
+      - name: nginx
+        image: pallavi122/mysql:2.0.0
+        
